@@ -2,7 +2,7 @@
 	//game id check
 	if(isset($_POST['game'])){
 		$game = $_POST['game'];
-		$db = new PDO('sqlite:../db/ewuscbb.db');
+		$db = new PDO('sqlite:../assets/db/ewuscbb.db');
 		$game_query = $db->query("select Team, Date, 'Home/Away', Opponent, PointsFor, PointsAgst from Team_Game_Stats where Game_ID =".$game." limit 1");
 		$output = "<div class = 'container-fluid lg-font'>
 						<div class = 'row text-center'>";
@@ -14,7 +14,9 @@
 						<div class ='row bar'></div>
 						<div class = 'row text-center score-font'>
 							<div class = 'col-sm-6 score-font'>";
-			if($row["'Home/Away'"] == "Home"){
+			$what = $row["'Home/Away'"];
+			print $what." why??";
+			if($what == "Home"){
 				$home = $row['Team'];
 				$away = $row['Opponent'];
 			}else{
@@ -139,7 +141,5 @@
 	}else{
 		print "No game was found";
 	}
-
-	$db = NULL;
 	
 ?>

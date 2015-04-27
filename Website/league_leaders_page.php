@@ -171,156 +171,6 @@
 	  		</div>
 		</div>
 
-
-		<!--League leaders navbar title -->
-		<nav class="navbar navbar-inverse bodynav">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="navbar-header">
-						<a class="navbar-brand brandtitle" href="#">Per Game Leaders</a>
-					</div>
-					<ul class="nav navbar-nav navbar-right">
-						<li class="space active" id="player_"><a onClick="leaderUpdate('player_')">Players</a></li>
-						<li class="space" id="team_"><a onClick="leaderUpdate('team_')">Teams</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-
-		<!-- Player League Leaders -->
-		<div class="container-fluid" id ="player_leaders" style="display:show">
-			<div class = "text-center">
-				<!--Points -->
-				<div class="col-lg-4 col-md-4 col-sm-5 leadcol_full">
-					<div class="col_header">
-						<a href="#">POINTS </a>
-					</div>
-					<table class="table table-hover" id="points_leaders">
-						<tbody id="points_leaders_body">
-							<?php getPPG10() ?>
-					  	</tbody>
-		  			</table>
-		  		</div>
-		  		<!-- Rebounds  -->
-		  		<div class="col-lg-4 col-md-4 col-sm-5 leadcol_full">
-					<table class="table table-hover" id="rebounds_leaders">
-						<div class="col_header">
-							<a href="#">REBOUNDS </a>
-						</div>
-						<tbody id="rebounds_leaders_body">
-							<?php getRPG10()?>
-					  	</tbody>
-		  			</table>
-		  		</div>
-
-		  		<!-- Assists  -->
-		  		<div class="col-lg-4 col-md-4 col-sm-5 leadcol_full">
-					<table class="table table-hover" id="assists_leaders">
-						<div class="col_header">
-							<a href="#">ASSISTS </a>
-						</div>
-						<tbody id="assists_leaders_body">
-							<?php getAPG10() ?>
-					  	</tbody>
-		  			</table>
-		  		</div>
-
-				<!-- Steals  -->
-		  		<div class="col-lg-4 col-md-4 col-sm-5 leadcol_full">
-					<table class="table table-hover" id="steals_leaders">
-						<div class="col_header">
-							<a href="#">STEALS </a>
-						</div>
-						<tbody id="steals_leaders_body">
-							<?php getSPG10() ?>
-					  	</tbody>
-		  			</table>
-		  		</div>
-
-					<!-- Blocks  -->
-	          <div class="col-lg-4 col-md-4 col-sm-5 leadcol_full">
-	          <table class="table table-hover" id="blocks_leaders">
-	            <div class="col_header">
-	              <a href="#">BLOCKS </a>
-	            </div>
-	            <tbody id="blocks_leaders_body">
-	              <?php getBPG10() ?>
-	              </tbody>
-	            </table>
-	          </div>
-	 		</div>
-		</div>
-
-
-
-			<!-- OLD DO NOT USE REMAINDER Team league leaders main -->
-		<div class="container-fluid" id ="team_leaders" style="display:none">
-			<div class = "text-center">
-				<!--Points -->
-				<div class="col-lg-3 col-md-5 col-sm-5 leadcol">
-					<div class="col_header">
-						<a href="#">POINTS </a>
-					</div>
-
-					<table class="table table-hover" id="points_leaders">
-						<tbody id="points_leaders_body">
-							<?php teamPPG() ?>
-
-					  	</tbody>
-		  			</table>
-		  		</div>
-		  		<!-- Rebounds  -->
-		  		<div class="col-lg-3 col-md-5 col-sm-5 leadcol">
-					<table class="table table-hover" id="rebounds_leaders">
-						<div class="col_header">
-							<a href="#">REBOUNDS </a>
-						</div>
-						<tbody id="rebounds_leaders_body">
-							<?php teamRPG() ?>
-					  	</tbody>
-		  			</table>
-		  		</div>
-
-		  		<!-- Assists  -->
-		  		<div class="col-lg-3 col-md-5 col-sm-5 leadcol">
-					<table class="table table-hover" id="assists_leaders">
-						<div class="col_header">
-							<a href="#">ASSISTS </a>
-						</div>
-						<tbody id="assists_leaders_body">
-							<?php teamAPG() ?>
-					  	</tbody>
-		  			</table>
-		  		</div>
-
-				<!-- Steals  -->
-		  		<div class="col-lg-3 col-md-5 col-sm-5 leadcol">
-					<table class="table table-hover" id="steals_leaders">
-						<div class="col_header">
-							<a href="#">STEALS </a>
-						</div>
-						<tbody id="steals_leaders_body">
-							<?php teamSPG() ?>
-					  	</tbody>
-		  			</table>
-		  		</div>
-
-		  		<!-- Blocks  -->
-		  		<div class="col-lg-3 col-md-5 col-sm-5 leadcol">
-					<table class="table table-hover" id="blocks_leaders">
-						<div class="col_header">
-							<a href="#">BLOCKS </a>
-						</div>
-						<tbody id="steals_leaders_body">
-							<?php teamBPG() ?>
-					  	</tbody>
-		  			</table>
-		  		</div>
-	  		</div>
-		</div>
-
-
-
 		<!-- Shooting leaders -->
 		<nav class="navbar navbar-inverse bodynav">
 			<div class="container-fluid">
@@ -420,6 +270,152 @@
 			</div>
 		</div>
 
+		<!--League leaders navbar title -->
+		<nav class="navbar navbar-inverse bodynav">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="navbar-header">
+						<a class="navbar-brand brandtitle" href="#">Per Game Leaders</a>
+					</div>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="space active" id="player_"><a onClick="leaderUpdate('player_')">Players</a></li>
+						<li class="space" id="team_"><a onClick="leaderUpdate('team_')">Teams</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Player League Leaders -->
+		<div class="container-fluid" id ="player_leaders" style="display:show">
+			<div class = "text-center">
+				<!--Points -->
+				<div class="col-lg-4 col-md-4 col-sm-5 leadcol_full">
+					<div class="col_header">
+						<a href="#">POINTS </a>
+					</div>
+					<table class="table table-hover" id="points_leaders">
+						<tbody id="points_leaders_body">
+							<?php getPPG10() ?>
+					  	</tbody>
+		  			</table>
+		  		</div>
+		  		<!-- Rebounds  -->
+		  		<div class="col-lg-4 col-md-4 col-sm-5 leadcol_full">
+					<table class="table table-hover" id="rebounds_leaders">
+						<div class="col_header">
+							<a href="#">REBOUNDS </a>
+						</div>
+						<tbody id="rebounds_leaders_body">
+							<?php getRPG10()?>
+					  	</tbody>
+		  			</table>
+		  		</div>
+
+		  		<!-- Assists  -->
+		  		<div class="col-lg-4 col-md-4 col-sm-5 leadcol_full">
+					<table class="table table-hover" id="assists_leaders">
+						<div class="col_header">
+							<a href="#">ASSISTS </a>
+						</div>
+						<tbody id="assists_leaders_body">
+							<?php getAPG10() ?>
+					  	</tbody>
+		  			</table>
+		  		</div>
+
+				<!-- Steals  -->
+		  		<div class="col-lg-4 col-md-4 col-sm-5 leadcol_full">
+					<table class="table table-hover" id="steals_leaders">
+						<div class="col_header">
+							<a href="#">STEALS </a>
+						</div>
+						<tbody id="steals_leaders_body">
+							<?php getSPG10() ?>
+					  	</tbody>
+		  			</table>
+		  		</div>
+
+					<!-- Blocks  -->
+	          <div class="col-lg-4 col-md-4 col-sm-5 leadcol_full">
+	          <table class="table table-hover" id="blocks_leaders">
+	            <div class="col_header">
+	              <a href="#">BLOCKS </a>
+	            </div>
+	            <tbody id="blocks_leaders_body">
+	              <?php getBPG10() ?>
+	              </tbody>
+	            </table>
+	          </div>
+	 		</div>
+		</div>
+
+
+
+			<!-- Team league leaders main -->
+		<div class="container-fluid" id ="team_leaders" style="display:none">
+			<div class = "text-center">
+				<!--Points -->
+				<div class="col-lg-3 col-md-5 col-sm-5 leadcol">
+					<div class="col_header">
+						<a href="#">POINTS </a>
+					</div>
+
+					<table class="table table-hover" id="points_leaders">
+						<tbody id="points_leaders_body">
+							<?php teamPPG() ?>
+
+					  	</tbody>
+		  			</table>
+		  		</div>
+		  		<!-- Rebounds  -->
+		  		<div class="col-lg-3 col-md-5 col-sm-5 leadcol">
+					<table class="table table-hover" id="rebounds_leaders">
+						<div class="col_header">
+							<a href="#">REBOUNDS </a>
+						</div>
+						<tbody id="rebounds_leaders_body">
+							<?php teamRPG() ?>
+					  	</tbody>
+		  			</table>
+		  		</div>
+
+		  		<!-- Assists  -->
+		  		<div class="col-lg-3 col-md-5 col-sm-5 leadcol">
+					<table class="table table-hover" id="assists_leaders">
+						<div class="col_header">
+							<a href="#">ASSISTS </a>
+						</div>
+						<tbody id="assists_leaders_body">
+							<?php teamAPG() ?>
+					  	</tbody>
+		  			</table>
+		  		</div>
+
+				<!-- Steals  -->
+		  		<div class="col-lg-3 col-md-5 col-sm-5 leadcol">
+					<table class="table table-hover" id="steals_leaders">
+						<div class="col_header">
+							<a href="#">STEALS </a>
+						</div>
+						<tbody id="steals_leaders_body">
+							<?php teamSPG() ?>
+					  	</tbody>
+		  			</table>
+		  		</div>
+
+		  		<!-- Blocks  -->
+		  		<div class="col-lg-3 col-md-5 col-sm-5 leadcol">
+					<table class="table table-hover" id="blocks_leaders">
+						<div class="col_header">
+							<a href="#">BLOCKS </a>
+						</div>
+						<tbody id="steals_leaders_body">
+							<?php teamBPG() ?>
+					  	</tbody>
+		  			</table>
+		  		</div>
+	  		</div>
+		</div>
 	</body>
 </html>
 

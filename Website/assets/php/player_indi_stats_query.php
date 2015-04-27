@@ -9,7 +9,7 @@
 	$seasonoverview = $db->query('select  round(Points/Games_Played,1) as points, round(Assists/Games_Played,1) as assists, round(Rebounds/Games_Played,1) as rebounds, round(Steals/Games_Played,1) as steals from Player_Stats where Player_ID = '.$id);
 	$seasonavgs = $db->query('select Games_Played, round(Points/Games_Played,1) as points, round(FGM*1.0/Games_Played,2) as fgm, round(FGA*1.0/Games_Played,2) as fga, round(TPM*1.0/Games_Played,2) as tpm, round(TPA*1.0/Games_Played,2) as tpa, round(FTM/Games_Played,2) as ftm, round(FTA/Games_Played,2) as fta, round(Assists/Games_Played,1) as assists, round(Steals/Games_Played,1) as steals, round(Rebounds/Games_Played,1) as rebounds, round(Blocks/Games_Played,1) as blocks from Player_Stats where Player_ID = '.$id);
 	$seasontotals = $db->query('select * from Player_Stats where Player_ID = '.$id);
-
+	$gamestats = $db->query('select Team, Game_ID, Points, FGM, FGA, TPM, TPA, FTM, FTA, Assists, Steals, Rebounds, Blocks from Player_Game_Stats natural join Player_Info where Player_ID='.$id);
 	//basic player info - nate,number,position,team
 	function getPlayerInfo(){
 		try
@@ -132,5 +132,50 @@
 		  {
 		    print 'Exception : '.$e->getMessage();
 		  }
+	}
+
+	//per game stats
+	function getGameLogs(){
+		try{
+
+			global $gamestats;
+			$db_temp = new PDO('sqlite:assets/db/ewuscbb.db');
+			foreach($gamestats as $row){
+				$gameopponent = $db_temp->query('select Date, Opponent from Team_Game_Stats where Game_ID='.$row['Game_ID'].' and Team='.$row['Team']);
+				foreach($gameopponent as $gamerow){
+				      $fgpct = 0.0;
+				      $tppct = 0.0;
+				      $ftpct = 0.0;
+				      if($row['FGA']!=0)
+				      	$fgpct = round($row['FGM']/$row['FGA'],3)*100;
+				      if($row['TPA']!=0)
+				      	$tppct = round($row['TPM']/$row['TPA'],3)*100;
+				      if($row['FTA']!=0)
+				     	 $ftpct = round($row['FTM']/$row['FTA'],3)*100;
+
+				      print "<tr><td>".$gamerow['Date']."</td>";
+				      print "<td>Team ".$gamerow['Opponent']."</td>";
+				      print "<td>".$row['Points']."</td>";
+				      print "<td>".$row['FGM']."</td>";
+				      print "<td>".$row['FGA']."</td>";
+				      print "<td>".$fgpct."</td>";
+				      print "<td>".$row['TPM']."</td>";
+				      print "<td>".$row['TPA']."</td>";
+				      print "<td>".$tppct."</td>";
+				      print "<td>".$row['FTM']."</td>";
+				      print "<td>".$row['FTA']."</td>";
+				      print "<td>".$ftpct."</td>";
+				      print "<td>".$row['Assists']."</td>";
+				      print "<td>".$row['Steals']."</td>";
+				      print "<td>".$row['Rebounds']."</td>";
+				      print "<td>".$row['Blocks']."</td></tr>";
+				}
+			}
+
+
+			$db = null;
+		}catch(PDOException $e){
+			print 'Exception : '.$e->getMessage();
+		}
 	}
 ?>

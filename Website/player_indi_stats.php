@@ -125,7 +125,7 @@
 
 
 
-				<!--Navbar Past Games-->
+		<!--Navbar Past Games-->
 		<nav class="navbar navbar-inverse bodynav">
 			<div class="container-fluid">
 				<div class="row">
@@ -149,5 +149,34 @@
 				</div>
 			</div>
 		</nav>
+
+		<!-- Per game -->
+		<div class="container-fluid" id="per_game" style="display:show">
+			<table class="table table-condensed" id="per_game_stats">
+				<thead>
+					<tr >
+						<th>Date</th>
+						<th>Opponent</th>
+						<th>PTS</th>
+						<th>FGM</th>
+						<th>FGA</th>
+						<th>FG%</th>
+						<th>TPM</th>
+						<th>TPA</th>
+						<th>TP%</th>
+						<th>FTM</th>
+						<th>FTA</th>
+						<th>FT%</th>
+						<th>AST</th>
+						<th>STL</th>
+						<th>REB</th>
+						<th>BLK</th>
+					</tr>
+				</thead>
+				<tbody id="per_game_stats_body">
+					<?php getGameLogs() ?>
+			  	</tbody>
+  			</table>
+		</div>
 	</body>
 	<?php require_once 'footer.php';?>
