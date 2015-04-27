@@ -1,0 +1,93 @@
+/*
+* Spokane Club Basketball Stats
+*/
+body{
+  font-family:'Lato',sans-serif;
+  font-weight:400;
+  font-size:15;
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+
+}
+
+footer{
+  font-family:'Lato',sans-serif;
+  font-size:12px;
+  text-align:center;
+  border:1px solid;
+
+}
+
+.input{
+  height:800px;
+}
+
+.logo{
+  margin-top:15px;
+  margin-bottom:15px;
+  text-align:center;
+}
+
+.navbar{
+  padding:20px;
+  padding-bottom:0px;
+  border-radius:0px;
+}
+
+
+#login_link{
+  font-weight:bold;
+  font-size:10px;
+  color: #6E6E6E;
+}
+
+#logout_link{
+  font-weight:bold;
+  font-size:10px;
+  color: #6E6E6E;
+}
+
+.navbar .navbar-brand{
+  font-weight:bold;
+  font-size:20px;
+}
+
+
+/* fixes shifting of the page when modal is opened */
+.modal {
+ overflow-y: auto;
+}
+
+.modal-open {
+ overflow: auto;
+}
+
+#login_modal .modal-dialog  {
+  max-width: 450px;
+}
+
+
+@media(min-width:840px) {
+    body{
+      padding-left: 6%;
+      padding-right:6%;
+    }
+}
+@media(min-width:992px) {
+    body{
+      padding-left: 8%;
+      padding-right:8%;
+    }
+}
+@media(min-width:1200px) {
+    body{
+      padding-left: 10%;
+      padding-right:10%;
+    }
+}
+@media(min-width:1400px) {
+    body{
+      padding-left: 12%;
+      padding-right:12%;
+    }
+}

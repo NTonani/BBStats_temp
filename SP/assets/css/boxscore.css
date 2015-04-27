@@ -1,0 +1,26 @@
+.lg-font{
+	font-size:20px;
+}
+
+.score-font{
+	font-size:50px;
+	font-weight:10;
+}
+
+.team-font{
+	font-size:35px;
+}
+
+.bar{
+	margin-top:20px;
+	margin-bottom: 20px;
+	height:5;
+	background-color: grey;
+}
+
+.roster-bar{
+	margin-top:20px;
+	margin-bottom: 20px;
+	background-color: grey;
+	color:white;
+}
