@@ -22,6 +22,9 @@
 
 		<!-- page spec css -->
 		<link href="assets/css/individualstats.css" rel="stylesheet">
+		<script src="assets/js/bootstrap.min.js"></script>
+
+
 
 	</head>
 	<body>

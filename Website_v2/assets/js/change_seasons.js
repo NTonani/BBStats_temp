@@ -1,5 +1,6 @@
 
 $(document).ready(function(){
+
 	var id  = jQuery.query.get("sid");
 	if(id=="main"){
 		if (document.getElementById)

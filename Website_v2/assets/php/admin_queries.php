@@ -1,11 +1,13 @@
 <?php
-
+include 'proper_season_db.php';
 
 	function getGameHistory()
 	{
 		try
 		{
-			$db = new PDO('sqlite:assets/db/ewuscbb.db');
+			  
+			  $dbString = getDB();
+			  $db = new PDO('sqlite:assets/db/'.$dbString);
 			$games = $db->query('SELECT Game_ID, Home, Away, Date, Time FROM Schedule');
 			$db = NULL;
 
@@ -28,7 +30,9 @@
 	function getHomeStats()
 	{
 		$id  = (int)$_GET["id"];
-		$db = new PDO("sqlite:assets/db/ewuscbb.db");
+
+		  $dbString = getDB();
+		  $db = new PDO('sqlite:assets/db/'.$dbString);
 		$game = $db->query("SELECT First_Name, Last_Name, Points, FGM, FGA, TPM, TPA, FTM, FTA, Assists, Steals, Rebounds, Blocks FROM Player_Info join Schedule ON Team = Schedule.Home left outer join Player_Game_Stats on Schedule.Game_ID = Player_Game_Stats.Game_ID and Player_Game_Stats.Player_ID = Player_Info.Player_ID WHERE Schedule.Game_ID = " .$id);
 		$db = NULL;
 
@@ -52,7 +56,8 @@
 	function getGameStats()
 	{
 		$id  = (int)$_GET["id"];
-		$db = new PDO("sqlite:assets/db/ewuscbb.db");
+		  $dbString = getDB();
+		  $db = new PDO('sqlite:assets/db/'.$dbString);
 		$game = $db->query("SELECT First_Name, Last_Name, Points, FGM, FGA, TPM, TPA, FTM, FTA, Assists, Steals, Rebounds, Blocks FROM Player_Info join Schedule ON Team = Schedule.Home OR Team = Schedule.Away left outer join Player_Game_Stats on Schedule.Game_ID = Player_Game_Stats.Game_ID and Player_Game_Stats.Player_ID = Player_Info.Player_ID WHERE Schedule.Game_ID = " .$id);
 		$db = NULL;
 
@@ -67,7 +72,8 @@
 	function getAwayStats()
 	{
 		$id  = (int)$_GET["id"];
-		$db = new PDO('sqlite:assets/db/ewuscbb.db');
+		  $dbString = getDB();
+		  $db = new PDO('sqlite:assets/db/'.$dbString);
 		$game = $db->query("SELECT First_Name, Last_Name, Points, FGM, FGA, TPM, TPA, FTM, FTA, Assists, Steals, Rebounds, Blocks FROM Player_Info join Schedule ON Team = Schedule.Away left outer join Player_Game_Stats on Schedule.Game_ID = Player_Game_Stats.Game_ID and Player_Game_Stats.Player_ID = Player_Info.Player_ID WHERE Schedule.Game_ID = " .$id);
 		
 		$db = NULL;
@@ -93,7 +99,8 @@
 	{
 		try
 		{
-			$db = new PDO('sqlite:assets/db/ewuscbb.db');
+			  $dbString = getDB();
+			  $db = new PDO('sqlite:assets/db/'.$dbString);
 			$games = $db->query('SELECT Player_ID, Last_Name, First_Name FROM Player_Info');
 			$db = NULL;
 

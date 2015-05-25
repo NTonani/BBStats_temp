@@ -121,7 +121,8 @@
 
 
 	    <!--load javascript-->
-	    <script src="assets/js/bootstrap.min.js"></script>
+	
+
 		<!-- testing javascript stuff here #TEMPORARY-->
 
 		<!--##################END OF JAVASCRIPT##################-->
