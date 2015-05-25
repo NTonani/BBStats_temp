@@ -112,7 +112,7 @@
 	}
 
 
-	function getSeasons() 
+	function getSeasonsAdmin() 
 	{
 		try
 		{

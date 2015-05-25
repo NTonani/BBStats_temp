@@ -1,3 +1,5 @@
+<?php require_once 'assets/php/collect_seasons.php'; ?>
+
 <!-- Header for all pages - includes site navigation and potentially a scoreboard -->
 <html lang="en">
 	<head>
@@ -18,14 +20,33 @@
 
 
 		<!--js-->
+		
 		<script src="assets/js/bootstrap.min.js"></script>
 		<script src="https://code.jquery.com/jquery.js"></script>
+		<script src="assets/js/jquery.query-object.js"></script>
 		<script src="assets/js/navpage.js"></script>
+		<script src ="assets/js/change_seasons.js"></script>
 	</head>
 	<body id="page-top">
 		<!--Navbar-->
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
+				<div class="admin-login">
+									<ul class="nav navbar-nav navbar-right" id="account_nav">
+										<?php 
+										if(isset($_COOKIE["loggedin"]) && $_COOKIE["loggedin"]==0) { ?>
+																	<a href="#" id="login_link" data-toggle="modal" data-target="#login_modal">admin</a>
+
+										<?php }else{ ?>
+					<a href="admin_home.php" id="login_link">admin</a>
+											<a href="admin_logout.php" id="logout_link">logout</a>
+						<?php } ?>
+						
+
+					</ul>
+				</div>
+
+
 				<div class="row logo">
 					<a class="" href="http://www.spokaneclub.org"><img class="image-responsive" style="margin-top:-7px" src="assets/img/scsmall.png"></img></a>
 				</div>
@@ -35,6 +56,8 @@
 							<span class="sr-only">Toggle Navigation</span>
 							<span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 						<a class="navbar-brand" href="index.php">Basketball Stats</a>
+
+						
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right" id="main_nav">
@@ -55,22 +78,42 @@
 			</div>
 		</div>
 
+
+		<!-- seasons -->
+		<div class = "season_select" style="padding-top:10px">
+			<div class = "dropdown">
+				<button class="btn btn-default dropdown-toggle" type="button" id="seasons_btn" data-toggle="dropdown" aria-expanded="true">
+   
+    				<span class="caret"></span>
+ 				 </button>
+ 				 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				 	<?php getSeasons(); ?>  
+				 </ul>
+				</div>
+			</div>
+		</div>
+
+
 		<!-- Login modal, or do we want to have login be a separate page? -->
 
-	    <div class="modal" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="exit_modal" aria-hidden="true">
+	     <div class="modal" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modal" aria-hidden="true">
 	      <div class="modal-dialog">
 	        <div class="modal-content">
 	          <div class="modal-header">
 	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	            <h4 class="modal-title" id="modalLabel">Admin Login</h4>
+	            <h4 class="modal-title" id="modalLabel">Sign in</h4>
 	          </div>
-	          <div class="modal-body">
-	            <h3>Some Login stuff</h3>
-	          </div>
-	          <div class="modal-footer">
-	            <button type="button" class="btn btn-default" onclick="#" data-dismiss="modal">Cancel</button>
-	            <button type="button" class="btn btn-primary" onclick="#">Login</button>
-	          </div>
+  	          <form class="form-signin" action ="admin_login.php" method ="post">
+		          <div class="modal-body">
+	                <input type="text"  name ="username" class = "form-control" placeholder="Username" required autofocus><br>
+	                <input type="password" name = "password" class = "form-control" placeholder="Password" required><br>
+		          	<div class="checkbox"><label><input type="checkbox"> Remember me</label></div>
+		          </div>
+		          <div class="modal-footer">
+		            <button type="button" class="btn btn-default" onclick="#" data-dismiss="modal">Cancel</button>
+	 				<button type="submit" class="btn btn-default">Sign in</button>
+				  </div>
+			  </form>
 	        </div>
 	      </div>
 	    </div>

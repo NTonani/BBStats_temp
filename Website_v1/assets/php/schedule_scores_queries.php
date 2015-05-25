@@ -2,7 +2,9 @@
 <?php
 
 	//$schedule = $db->query('select Home, Away, Date, Time from Schedule where DATE(Date) >= DATE(NOW()) order by Date asc');
-	$db = new PDO('sqlite:assets/db/ewuscbb.db');
+	include 'proper_season_db.php';
+	$dbString = getDB();
+	$db = new PDO('sqlite:assets/db/'.$dbString);
 	$schedule = $db->query("select t1.Game_ID, t1.Home, t1.Away, t1.Date, t1.Time, t2.PointsFor,t2.PointsAgst from Schedule t1 left join Team_Game_Stats t2 on t1.Game_ID = t2.Game_ID and t1.Home = t2.Team order by t1.Date asc");
 
 	//$schedule = $db->query('select t1.Home from Schedule t1 right join Team_Game_Stats t2 on t1.Home = t2.Team and t1.Date = t2.Date');

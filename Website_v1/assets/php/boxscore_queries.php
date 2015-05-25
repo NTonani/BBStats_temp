@@ -2,7 +2,9 @@
 	//game id check
 	if(isset($_POST['game'])){
 		$game = $_POST['game'];
-		$db = new PDO('sqlite:../db/ewuscbb.db');
+		include 'proper_season_db.php';
+		$dbString = getDB();
+		$db = new PDO('sqlite:../db/'.$dbString);
 		$game_query = $db->query("select Team, Date, \"Home/Away\" as ha, Opponent, PointsFor, PointsAgst from Team_Game_Stats where Game_ID =".$game." limit 1");
 		$output = "<div class = 'container-fluid lg-font'>
 						<div class = 'row text-center'>";
@@ -24,7 +26,7 @@
 			$homepts = $row['PointsFor'];
 			$awaypts = $row['PointsAgst'];
 
-			//naive way of indicating winning team....
+			//poor way of indicating winning team....
 			if($homepts < $awaypts){
 				$output = $output."".$homepts."</div><div class = 'col-sm-6'><b>".$awaypts."</b></div></div>";
 			}else{
@@ -107,7 +109,7 @@
 												</thead>
 											<tbody>";
 			foreach($away_players as $row){
-				$player = "<tr><td>".$row['First_Name']." ".$row['Last_Name']."<td>";
+				$player = "<tr><td>".$row['First_Name']." ".$row['Last_Name']."</td>";
 				$player = $player."<td>".$row['FGM']."</td>";
 				$player = $player."<td>".$row['FGA']."</td>";
 				$player = $player."<td>".$row['TPM']."</td>";

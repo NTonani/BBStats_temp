@@ -17,7 +17,9 @@
 
 		<!-- page spec css -->
 		<link href="assets/css/individualstats.css" rel="stylesheet">
-
+		<link href="assets/css/boxscore.css" rel="stylesheet">
+		<!-- boxscore js -->
+		<script src="assets/js/boxscore.js"></script>
 		<!-- team info js -->
 		<script src="assets/js/teamshow.js"></script>
 
@@ -46,7 +48,40 @@
 				print "<script type='text/javascript' src='assets/js/teamshow.js'> showTeam('".$team."'); </script>";
 			}?>
 
+<!-- REMAINDER IS BOXSCORE MODAL -->
+		<script type="text/javascript"> function boxscore(input){
+			$('.modal-body').empty();
+
+			$.ajax({
+				url: 'assets/php/boxscore_queries.php',
+				data: {'game': input},
+				type: "POST",
+				success: function(data){
+					$('.modal-body').append(data);
+				}
+
+
+			});
+			$('#boxscore_modal').modal('show');
+		} </script>
+	    <!-- Modal HTML -->
+    <div id="boxscore_modal" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Boxscore</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 		<div class="footermargin"></div>
+
     </body>
   </html>
   <?php require_once 'footer.php';?>

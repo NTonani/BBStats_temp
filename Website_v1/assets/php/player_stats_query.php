@@ -1,7 +1,8 @@
 
 <?php
-
-	$db = new PDO('sqlite:assets/db/ewuscbb.db');
+	include 'proper_season_db.php';
+	$dbString = getDB();
+	$db = new PDO('sqlite:assets/db/'.$dbString);
 
 	//player per game
 	$pergame = $db->query('select Player_ID, First_Name, Last_Name, Games_Played, round(Points/Games_Played,1) as points, round(FGM*1.0/Games_Played,2) as fgm, round(FGA*1.0/Games_Played,2) as fga, round(TPM*1.0/Games_Played,2) as tpm, round(TPA*1.0/Games_Played,2) as tpa, round(FTM/Games_Played,2) as ftm, round(FTA/Games_Played,2) as fta, round(Assists/Games_Played,1) as assists, round(Steals/Games_Played,1) as steals, round(Rebounds/Games_Played,1) as rebounds, round(Blocks/Games_Played,1) as blocks from Player_Stats');

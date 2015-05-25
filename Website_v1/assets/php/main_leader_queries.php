@@ -4,7 +4,9 @@
 	//executing queries on page load
 	//player based leaders
 
-	$db = new PDO('sqlite:assets/db/ewuscbb.db');
+	include 'proper_season_db.php';
+	$dbString = getDB();
+	$db = new PDO('sqlite:assets/db/'.$dbString);
 	$ppg = $db->query('select pi.Player_ID, ps.First_Name, ps.Last_Name, Team, round(Points/Games_Played, 1) as PPG
 			from Player_Stats as ps left outer join Player_Info as pi on ps.First_Name = 	pi.First_Name and ps.Last_Name = pi.Last_Name
 			order by PPG desc

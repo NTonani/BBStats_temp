@@ -54,7 +54,7 @@
 								</tr>
 							</thead>
 							<tbody id="games_body">
-								<?php getSeasons() ?>
+								<?php getSeasonsAdmin() ?>
 						  	</tbody>						
 			  			</table>
 					</div>

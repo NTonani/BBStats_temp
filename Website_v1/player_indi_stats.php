@@ -2,7 +2,7 @@
 <?php
 	require_once 'header.php';
 	require_once 'assets/php/player_indi_stats_query.php';
-	if((int)$_GET["id"]==0){
+	if(!(isset($_GET["id"]))){
 		print "<div class = 'container'>
 				<div class = 'text-center'>
 					<h1>Not a valid player</h1>
